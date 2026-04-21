@@ -1,2 +1,1 @@
-Index
 Business Website 
