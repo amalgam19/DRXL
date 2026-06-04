@@ -19,7 +19,7 @@ body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);font-si
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--rule)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:var(--ff-body);font-weight:600;font-size:15px;letter-spacing:0.2em;color:var(--ink);text-decoration:none}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{border:1px solid var(--rule-heavy);padding:8px 20px;transition:background 0.2s,color 0.2s}
@@ -60,16 +60,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .cred-index{font-size:11px;color:var(--ink-light);letter-spacing:0.08em;min-width:24px;padding-top:2px}
 .cred-content strong{display:block;font-weight:600;font-size:13px;margin-bottom:2px}
 .cred-content span{font-size:12px;color:var(--ink-mid)}
+.why{border-bottom:1px solid var(--rule);background:var(--ink)}
+.why-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
+.why-header{margin-bottom:4rem}
+.why-heading{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1;color:var(--paper)}
+.why-heading em{font-style:italic;font-weight:500;color:rgba(255,255,255,0.5)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(255,255,255,0.12)}
+.why-card{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.12)}
+.why-card:last-child{border-right:none}
+.why-num{font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:1.5rem}
+.why-title{font-family:var(--ff-display);font-size:22px;font-weight:600;color:var(--paper);margin-bottom:1rem;line-height:1.2}
+.why-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8}
 .bio{border-bottom:1px solid var(--rule);background:var(--paper-warm)}
 .bio-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr}
 .bio-left{padding:5rem 2.5rem;border-right:1px solid var(--rule)}
-.bio-name{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,3vw,48px);line-height:1.1;margin-bottom:0.5rem}
-.bio-title{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
+.bio-title-name{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,3vw,48px);line-height:1.1;margin-bottom:0.5rem}
+.bio-title-role{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:2rem}
 .bio-tags{display:flex;flex-direction:column;gap:0.75rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--rule)}
 .bio-tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-mid)}
 .bio-right{padding:5rem 2.5rem}
 .bio-body{font-size:15px;color:var(--ink-mid);line-height:1.95;margin-bottom:1.5rem}
-.bio-sign{font-family:var(--ff-display);font-size:18px;font-style:italic;color:var(--ink-mid);margin-top:2rem;padding-top:2rem;border-top:1px solid var(--rule)}
 .services{border-bottom:1px solid var(--rule)}
 .services-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
 .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
@@ -82,17 +92,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .service-card:hover{background:var(--paper-warm)}
 .service-card:hover::after{transform:scaleX(1)}
 .service-num{font-size:11px;letter-spacing:0.14em;color:var(--ink-light);margin-bottom:1.5rem}
-.service-title{font-family:var(--ff-display);font-size:26px;font-weight:600;margin-bottom:1rem;line-height:1.1}
-.service-desc{font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:2rem}
+.service-title{font-family:var(--ff-display);font-size:24px;font-weight:600;margin-bottom:1rem;line-height:1.1}
+.service-desc{font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem}
+.service-list{list-style:none;margin-bottom:1.5rem}
+.service-list li{font-size:12px;color:var(--ink-mid);padding:0.4rem 0;border-bottom:1px solid var(--rule);display:flex;gap:8px;align-items:flex-start}
+.service-list li::before{content:'—';color:var(--ink-light);flex-shrink:0}
 .service-tag{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:1rem;display:block}
-.process{border-bottom:1px solid var(--rule);background:var(--paper-warm)}
+.sectors{border-bottom:1px solid var(--rule);background:var(--paper-warm)}
+.sectors-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
+.sectors-header{margin-bottom:4rem}
+.sectors-heading{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1}
+.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule)}
+.sector-card{padding:2rem 1.5rem;border-right:1px solid var(--rule)}
+.sector-card:last-child{border-right:none}
+.sector-num{font-size:11px;letter-spacing:0.14em;color:var(--ink-light);margin-bottom:1rem}
+.sector-title{font-family:var(--ff-display);font-size:20px;font-weight:600;margin-bottom:0.75rem;line-height:1.1}
+.sector-desc{font-size:12px;color:var(--ink-mid);line-height:1.7}
+.process{border-bottom:1px solid var(--rule)}
 .process-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
 .process-header{margin-bottom:4rem}
 .process-heading{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
 .process-steps::before{content:'';position:absolute;top:22px;left:0;right:0;height:1px;background:var(--rule-heavy)}
 .step{padding:0 2rem 0 0}
-.step-marker{width:44px;height:44px;border:1px solid var(--rule-heavy);background:var(--paper-warm);display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0.08em;color:var(--ink-mid);margin-bottom:1.5rem;position:relative;z-index:1}
+.step-marker{width:44px;height:44px;border:1px solid var(--rule-heavy);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0.08em;color:var(--ink-mid);margin-bottom:1.5rem;position:relative;z-index:1}
 .step-title{font-weight:600;font-size:13px;margin-bottom:0.75rem}
 .step-desc{font-size:13px;color:var(--ink-mid);line-height:1.8}
 .contact{border-bottom:1px solid var(--rule)}
@@ -125,8 +148,8 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     <a href="#" class="nav-logo">DRXL</a>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#bio">Team</a>
       <a href="#services">Services</a>
+      <a href="#sectors">Sectors</a>
       <a href="#process">Process</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
     </div>
@@ -138,7 +161,7 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     <p class="hero-eyebrow">Owner's Representative · South Florida</p>
     <h1 class="hero-heading">Capital projects,<br><em>delivered with precision.</em></h1>
     <div class="hero-bottom">
-      <p class="hero-sub">Independent project management and owner's representation for condominium associations and private owners across Miami-Dade and Broward County.</p>
+      <p class="hero-sub">Independent project management and owner's representation for condominium associations, HOAs, and private owners across Miami-Dade and Broward County.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Start a project</a>
         <a href="#services" class="btn-ghost">View services →</a>
@@ -159,7 +182,7 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <p class="section-label">About DRXL</p>
       <h2 class="about-heading">An independent firm built for owners, not contractors.</h2>
       <p class="about-body">DRXL is an owner's representative consultancy specializing in capital improvement projects across South Florida. We sit on your side of the table — providing the technical oversight, vendor accountability, and schedule discipline that associations and private owners deserve.</p>
-      <p class="about-body">From envelope restorations and roof replacements to concrete repair and drainage systems, we bring structured project management discipline to every scope we touch.</p>
+      <p class="about-body">From envelope restorations and roof replacements to concrete repair and drainage systems, we bring structured project management discipline to every scope we touch. Bilingual in English and Spanish, we communicate clearly with every stakeholder on every project.</p>
     </div>
     <div class="about-right reveal">
       <p class="section-label">Credentials</p>
@@ -173,12 +196,28 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     </div>
   </div>
 </section>
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-header reveal">
+      <p class="section-label" style="color:rgba(255,255,255,0.4);">Why DRXL</p>
+      <h2 class="why-heading">What makes us <em>different.</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><p class="why-num">01</p><h3 class="why-title">South Florida Native</h3><p class="why-desc">Born and raised in South Florida, we know this market — the contractors, the permitting timelines, the local codes, and the pressures HOA boards face every day. No learning curve.</p></div>
+      <div class="why-card reveal"><p class="why-num">02</p><h3 class="why-title">Truly Independent</h3><p class="why-desc">We have no financial relationship with any contractor, vendor, or supplier. Our only obligation is to you. That independence is what makes our oversight meaningful.</p></div>
+      <div class="why-card reveal" style="border-right:none;"><p class="why-num">03</p><h3 class="why-title">Certified & Licensed</h3><p class="why-desc">PMP certified and LCAM licensed — we bring both construction project management discipline and deep community association expertise to every engagement.</p></div>
+      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">04</p><h3 class="why-title">Bilingual Advantage</h3><p class="why-desc">Fluent in English and Spanish, we eliminate communication gaps with contractors, engineers, and board members — keeping everyone aligned and accountable.</p></div>
+      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">05</p><h3 class="why-title">Field-Level Experience</h3><p class="why-desc">Over a decade managing capital projects on the ground — not from a desk. We've coordinated architects, engineers, attorneys, and contractors on complex South Florida projects.</p></div>
+      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);border-right:none;"><p class="why-num">06</p><h3 class="why-title">Structured Reporting</h3><p class="why-desc">Every project gets a structured reporting cadence — RFI logs, change order tracking, weekly status reports, and board-ready documentation at every phase.</p></div>
+    </div>
+  </div>
+</section>
 <section class="bio" id="bio">
   <div class="bio-inner">
     <div class="bio-left reveal">
       <p class="section-label">Principal</p>
-      <div class="bio-name">Hugo<br>Delgado</div>
-      <div class="bio-title">Owner's Representative</div>
+      <div class="bio-title-name">Owner's<br>Representative</div>
+      <div class="bio-title-role">South Florida · DRXL</div>
       <div class="bio-tags">
         <span class="bio-tag">PMP Certified</span>
         <span class="bio-tag">LCAM Licensed</span>
@@ -188,11 +227,10 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     </div>
     <div class="bio-right reveal">
       <p class="section-label">Biography</p>
-      <p class="bio-body">I'm a South Florida native with over a decade of boots-on-the-ground experience in construction project management and community association management across Miami-Dade and Broward County.</p>
-      <p class="bio-body">I started DRXL because I kept seeing the same gap — owners and associations lacking the technical representation needed to hold contractors, engineers, architects, and consultants accountable. Decisions get made without the right oversight, budgets drift, and schedules slip. DRXL exists to close that gap.</p>
-      <p class="bio-body">My background spans field-level project management, licensed community association management, and years coordinating architects, engineers, and legal counsel on capital improvement projects throughout South Florida. I understand how this market actually works — the contractors, the permitting timelines, and the pressures boards face every day.</p>
+      <p class="bio-body">A South Florida native with over a decade of boots-on-the-ground experience in construction project management and community association management across Miami-Dade and Broward County.</p>
+      <p class="bio-body">DRXL was founded because the same gap kept appearing — owners and associations lacking the technical representation needed to hold contractors, engineers, architects, and consultants accountable. Decisions get made without the right oversight, budgets drift, and schedules slip. DRXL exists to close that gap.</p>
+      <p class="bio-body">The background spans field-level project management, licensed community association management, and years coordinating architects, engineers, and legal counsel on capital improvement projects throughout South Florida. We understand how this market actually works — the contractors, the permitting timelines, and the pressures boards face every day.</p>
       <p class="bio-body">When you work with DRXL, you're not hiring a firm. You're hiring someone who has been in the field, knows your market, and is fully committed to protecting your interests from day one.</p>
-      <div class="bio-sign">Hugo Delgado</div>
     </div>
   </div>
 </section>
@@ -203,9 +241,23 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <p class="services-note">Three tiers of engagement</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal"><p class="service-num">01</p><h3 class="service-title">Bid Shield</h3><p class="service-desc">Scope review, bid leveling, and vendor vetting for projects entering the procurement phase. Protect your association from unbalanced bids and contractor risk before a dollar is committed.</p><span class="service-tag">Procurement advisory</span></div>
-      <div class="service-card reveal"><p class="service-num">02</p><h3 class="service-title">Project Advisory</h3><p class="service-desc">Monthly retainer oversight for active projects. RFI management, change order review, schedule monitoring, and board-ready status reporting delivered on a structured cadence.</p><span class="service-tag">Ongoing oversight</span></div>
-      <div class="service-card reveal"><p class="service-num">03</p><h3 class="service-title">Full Representation</h3><p class="service-desc">End-to-end owner's representation from design through closeout. We manage every stakeholder, document every decision, and keep the project on schedule and on budget.</p><span class="service-tag">Full lifecycle</span></div>
+      <div class="service-card reveal"><p class="service-num">01</p><h3 class="service-title">Bid Shield</h3><p class="service-desc">Protect your association from unbalanced bids and contractor risk before a dollar is committed.</p><ul class="service-list"><li>Scope of work review & gap analysis</li><li>Bid leveling & comparison matrix</li><li>Vendor qualification & vetting</li><li>Contract terms review</li><li>Award recommendation report</li></ul><span class="service-tag">Procurement advisory</span></div>
+      <div class="service-card reveal"><p class="service-num">02</p><h3 class="service-title">Project Advisory</h3><p class="service-desc">Monthly retainer oversight for active projects — structured reporting, accountability, and board-ready documentation.</p><ul class="service-list"><li>RFI management & tracking</li><li>Change order review & negotiation</li><li>Schedule monitoring & updates</li><li>Weekly status reports</li><li>Site visit documentation</li></ul><span class="service-tag">Ongoing oversight</span></div>
+      <div class="service-card reveal"><p class="service-num">03</p><h3 class="service-title">Full Representation</h3><p class="service-desc">End-to-end owner's representation from design through closeout — every stakeholder managed, every decision documented.</p><ul class="service-list"><li>Pre-construction planning & budgeting</li><li>Engineer & architect coordination</li><li>Full procurement management</li><li>Construction phase oversight</li><li>Closeout & warranty management</li></ul><span class="service-tag">Full lifecycle</span></div>
+    </div>
+  </div>
+</section>
+<section class="sectors" id="sectors">
+  <div class="sectors-inner">
+    <div class="sectors-header reveal">
+      <p class="section-label">Who we serve</p>
+      <h2 class="sectors-heading">Project types & sectors</h2>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card reveal"><p class="sector-num">01</p><h3 class="sector-title">Condominium Associations</h3><p class="sector-desc">Envelope restorations, reroofing, concrete repair, waterproofing, 40-year recertifications, and CAPEX projects for condo boards across South Florida.</p></div>
+      <div class="sector-card reveal"><p class="sector-num">02</p><h3 class="sector-title">HOAs & Multi-Family</h3><p class="sector-desc">Common area renovations, drainage systems, pavement, amenity upgrades, and structural repairs for homeowner associations and multi-family properties.</p></div>
+      <div class="sector-card reveal"><p class="sector-num">03</p><h3 class="sector-title">Commercial & Industrial</h3><p class="sector-desc">Tenant improvements, warehouse buildouts, facade restoration, and capital improvements for commercial property owners and developers.</p></div>
+      <div class="sector-card reveal"><p class="sector-num">04</p><h3 class="sector-title">Private Owners</h3><p class="sector-desc">High-end residential construction oversight, renovation management, and owner's representation for private clients and high-net-worth individuals.</p></div>
     </div>
   </div>
 </section>
@@ -259,8 +311,8 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
   <div class="footer-logo">DRXL</div>
   <div class="footer-links">
     <a href="#about">About</a>
-    <a href="#bio">Team</a>
     <a href="#services">Services</a>
+    <a href="#sectors">Sectors</a>
     <a href="#process">Process</a>
     <a href="#contact">Contact</a>
   </div>
