@@ -67,6 +67,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .cred-index{font-size:11px;color:var(--ink-light);letter-spacing:0.08em;min-width:24px;padding-top:2px}
 .cred-content strong{display:block;font-weight:600;font-size:13px;margin-bottom:2px}
 .cred-content span{font-size:12px;color:var(--ink-mid)}
+.bio{border-bottom:1px solid var(--rule)}
+.bio-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:0}
+.bio-left{padding:5rem 2.5rem;border-right:1px solid var(--rule)}
+.bio-name{font-family:var(--ff-display);font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.1;margin-bottom:0.5rem;margin-top:1.5rem}
+.bio-title{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-light);margin-bottom:2rem}
+.bio-tags{display:flex;flex-direction:column;gap:0.75rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--rule)}
+.bio-tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-mid)}
+.bio-right{padding:5rem 2.5rem}
+.bio-body p{font-size:15px;color:var(--ink-mid);line-height:1.9;margin-bottom:1.5rem}
+.bio-body p:last-child{margin-bottom:0}
+.bio-body p strong{color:var(--ink);font-weight:600}
 .services{border-bottom:1px solid var(--rule)}
 .services-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
 .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
@@ -122,6 +133,7 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     <a href="#" class="nav-logo">DRXL</a>
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#bio">Principal</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
@@ -160,91 +172,4 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     <div class="about-right reveal">
       <p class="section-label">Credentials</p>
       <div class="credentials">
-        <div class="cred"><div class="cred-index">01</div><div class="cred-content"><strong>Licensed Community Association Manager (LCAM)</strong><span>Florida DBPR · Active</span></div></div>
-        <div class="cred"><div class="cred-index">02</div><div class="cred-content"><strong>Project Management Professional (PMP)</strong><span>PMI Certified · 2026</span></div></div>
-        <div class="cred"><div class="cred-index">03</div><div class="cred-content"><strong>Bilingual · English / Spanish</strong><span>Full professional proficiency</span></div></div>
-        <div class="cred"><div class="cred-index">04</div><div class="cred-content"><strong>Primavera P6 · Microsoft Project</strong><span>Scheduling & controls proficiency</span></div></div>
-        <div class="cred"><div class="cred-index">05</div><div class="cred-content"><strong>Miami-Dade & Broward County</strong><span>10+ years field experience in South Florida</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="services" id="services">
-  <div class="services-inner">
-    <div class="services-header reveal">
-      <h2 class="services-heading">Services</h2>
-      <p class="services-note">Three tiers of engagement</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal"><p class="service-num">01</p><h3 class="service-title">Bid Shield</h3><p class="service-desc">Scope review, bid leveling, and vendor vetting for projects entering the procurement phase. Protect your association from unbalanced bids and contractor risk before a dollar is committed.</p><span class="service-tag">Procurement advisory</span></div>
-      <div class="service-card reveal"><p class="service-num">02</p><h3 class="service-title">Project Advisory</h3><p class="service-desc">Monthly retainer oversight for active projects. RFI management, change order review, schedule monitoring, and board-ready status reporting delivered on a structured cadence.</p><span class="service-tag">Ongoing oversight</span></div>
-      <div class="service-card reveal"><p class="service-num">03</p><h3 class="service-title">Full Representation</h3><p class="service-desc">End-to-end owner's representation from design through closeout. We manage every stakeholder, document every decision, and keep the project on schedule and on budget.</p><span class="service-tag">Full lifecycle</span></div>
-    </div>
-  </div>
-</section>
-<section class="process" id="process">
-  <div class="process-inner">
-    <div class="process-header reveal">
-      <p class="section-label">How we work</p>
-      <h2 class="process-heading">A disciplined process,<br>every time.</h2>
-    </div>
-    <div class="process-steps">
-      <div class="step reveal"><div class="step-marker">01</div><div class="step-title">Project Intake</div><div class="step-desc">We assess scope, existing documents, and risk exposure before any engagement begins — so there are no surprises.</div></div>
-      <div class="step reveal"><div class="step-marker">02</div><div class="step-title">Procurement</div><div class="step-desc">Bid packages, leveling matrices, and vendor qualification — structured so boards can award with confidence.</div></div>
-      <div class="step reveal"><div class="step-marker">03</div><div class="step-title">Execution</div><div class="step-desc">On-site oversight, RFI and change order management, and weekly status reports that keep stakeholders aligned.</div></div>
-      <div class="step reveal"><div class="step-marker">04</div><div class="step-title">Closeout</div><div class="step-desc">Punch list management, warranty tracking, lien release verification, and a final documentation package.</div></div>
-    </div>
-  </div>
-</section>
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left reveal">
-      <p class="section-label">Contact</p>
-      <h2 class="contact-heading">Let's talk about your project.</h2>
-      <p class="contact-sub">DRXL works with condominium associations, HOAs, and private owners throughout South Florida. Reach out to discuss scope and fit — no commitment required.</p>
-      <div class="contact-details">
-        <div class="contact-detail"><span class="contact-detail-label">Location</span><span>Miami, FL</span></div>
-        <div class="contact-detail"><span class="contact-detail-label">Service area</span><span>Miami-Dade & Broward County</span></div>
-        <div class="contact-detail"><span class="contact-detail-label">Languages</span><span>English · Spanish</span></div>
-        <div class="contact-detail"><span class="contact-detail-label">Email</span><span>info@drxl.com</span></div>
-      </div>
-    </div>
-    <div class="contact-right reveal">
-      <div id="form-container">
-        <form id="contact-form" action="https://formspree.io/f/xojzawdz" method="POST">
-          <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="Your name" required /></div>
-          <div class="form-field"><label>Organization</label><input type="text" name="organization" placeholder="Association or company" /></div>
-          <div class="form-field"><label>Email</label><input type="email" name="email" placeholder="Your email address" required /></div>
-          <div class="form-field"><label>Service</label><select name="service"><option value="">Select a service tier</option><option>Bid Shield — Procurement advisory</option><option>Project Advisory — Monthly retainer</option><option>Full Representation — End-to-end</option><option>Not sure yet</option></select></div>
-          <div class="form-field"><label>Project description</label><textarea name="message" placeholder="Brief description of your project, location, and timeline..."></textarea></div>
-          <button type="submit" class="form-submit" id="submit-btn">Send inquiry</button>
-        </form>
-        <div id="form-success" style="display:none;padding:3rem 0;">
-          <p style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:1rem;">Message received</p>
-          <p style="font-family:var(--ff-display);font-size:28px;font-weight:500;line-height:1.3;margin-bottom:1rem;">Thank you — we'll be in touch shortly.</p>
-          <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;">We typically respond within one business day.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="footer-logo">DRXL</div>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 DRXL Consulting · Miami, FL</div>
-</footer>
-<script>
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const siblings=[...el.parentElement.querySelectorAll('.reveal')];const idx=siblings.indexOf(el);setTimeout(()=>el.classList.add('visible'),idx*80);observer.unobserve(el)}})},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const form=document.getElementById('contact-form');
-const success=document.getElementById('form-success');
-const btn=document.getElementById('submit-btn');
-if(form){form.addEventListener('submit',async function(e){e.preventDefault();btn.textContent='Sending...';btn.disabled=true;const data=new FormData(form);const response=await fetch('https://formspree.io/f/xojzawdz',{method:'POST',body:data,headers:{'Accept':'application/json'}});if(response.ok){form.style.display='none';success.style.display='block'}else{btn.textContent='Something went wrong — try again';btn.disabled=false}})}
-</script>
-</body>
-</html>
+        <div class="cred"><div class="cred-index">01</div><div class="cred-content"><strong>Licensed Community Association Manager (LCAM)</strong><span>Florida DBPR · Active</span></div></div
