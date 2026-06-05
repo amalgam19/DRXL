@@ -24,6 +24,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{border:1px solid var(--rule-heavy);padding:8px 20px;transition:background 0.2s,color 0.2s}
 .nav-cta:hover{background:var(--ink);color:var(--paper)}
+.nav-hamburger{display:none}
 .hero{padding-top:64px;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:80px 80px;opacity:0.5;pointer-events:none}
 .hero-content{position:relative;padding:0 2.5rem 5rem;max-width:1200px;margin:0 auto;width:100%;animation:fadeUp 1s var(--ease) 0.2s both}
@@ -139,6 +140,70 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
 .footer-links a{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:var(--ink)}
 .footer-copy{font-size:12px;color:var(--ink-light)}
+
+/* ── MOBILE RESPONSIVENESS ── */
+@media (max-width: 768px) {
+  .nav-inner{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-logo{font-size:14px}
+  .nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+  .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all 0.3s}
+  .nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:1.5rem;z-index:99;flex-direction:column;gap:0}
+  .nav-mobile-menu.open{display:flex}
+  .nav-mobile-menu a{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;padding:1rem 0;border-bottom:1px solid var(--rule)}
+  .nav-mobile-menu a:last-child{border-bottom:none;margin-top:1rem;text-align:center;background:var(--ink);color:var(--paper);padding:12px}
+  .hero-content{padding:0 1.5rem 3rem}
+  .hero-heading{font-size:clamp(36px,10vw,52px)}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .hero-sub{max-width:100%}
+  .hero-actions{flex-direction:column;width:100%;gap:1rem}
+  .btn-primary{text-align:center;width:100%;padding:14px}
+  .btn-ghost{text-align:center;width:100%}
+  .stats-inner{grid-template-columns:1fr;padding:0 1.5rem}
+  .stat{border-right:none;border-bottom:1px solid var(--rule);padding:1.5rem 0}
+  .stat:last-child{border-bottom:none}
+  .about-inner{grid-template-columns:1fr}
+  .about-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .about-right{padding:3rem 1.5rem}
+  .why-inner{padding:3rem 1.5rem}
+  .why-grid{grid-template-columns:1fr}
+  .why-card{border-right:none !important;border-bottom:1px solid rgba(255,255,255,0.12)}
+  .why-card:last-child{border-bottom:none}
+  .bio-inner{grid-template-columns:1fr}
+  .bio-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .bio-right{padding:3rem 1.5rem}
+  .services-inner{padding:3rem 1.5rem}
+  .services-header{flex-direction:column;align-items:flex-start;gap:0.5rem;margin-bottom:2rem}
+  .services-grid{grid-template-columns:1fr !important}
+  .service-card{border-right:none !important;border-bottom:1px solid var(--rule)}
+  .service-card:last-child{border-bottom:none}
+  .sectors-inner{padding:3rem 1.5rem}
+  .sectors-grid{grid-template-columns:1fr 1fr}
+  .sector-card:nth-child(2){border-right:none}
+  .sector-card:nth-child(3){border-top:1px solid var(--rule)}
+  .sector-card:nth-child(4){border-top:1px solid var(--rule);border-right:none}
+  #compliance > div{padding:3rem 1.5rem}
+  #compliance > div > div:last-child{grid-template-columns:1fr !important}
+  #compliance > div > div:last-child > div{border-right:none !important;border-bottom:1px solid var(--rule)}
+  #compliance > div > div:last-child > div:last-child{border-bottom:none}
+  .process-inner{padding:3rem 1.5rem}
+  .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+  .process-steps::before{display:none}
+  .step{padding:0}
+  .contact-inner{grid-template-columns:1fr}
+  .contact-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .contact-right{padding:3rem 1.5rem}
+  .contact-heading{margin-top:0}
+  footer{flex-direction:column;gap:1.5rem;text-align:center;padding:2rem 1.5rem}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem}
+}
+@media (max-width: 480px) {
+  .sectors-grid{grid-template-columns:1fr}
+  .sector-card{border-right:none;border-bottom:1px solid var(--rule)}
+  .sector-card:last-child{border-bottom:none}
+  .process-steps{grid-template-columns:1fr}
+  .hero-heading{font-size:36px}
+}
 </style>
 </head>
 <body>
@@ -153,6 +218,17 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <a href="#process">Process</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
     </div>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#sectors" onclick="toggleMenu()">Sectors</a>
+    <a href="#compliance" onclick="toggleMenu()">Compliance</a>
+    <a href="#process" onclick="toggleMenu()">Process</a>
+    <a href="#contact" onclick="toggleMenu()">Get in touch</a>
   </div>
 </nav>
 <section class="hero">
@@ -349,6 +425,12 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
   <div class="footer-copy">© 2026 DRXL Consulting · Miami, FL</div>
 </footer>
 <script>
+function toggleMenu(){
+  const menu=document.getElementById('mobileMenu');
+  const ham=document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const siblings=[...el.parentElement.querySelectorAll('.reveal')];const idx=siblings.indexOf(el);setTimeout(()=>el.classList.add('visible'),idx*80);observer.unobserve(el)}})},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const form=document.getElementById('contact-form');
