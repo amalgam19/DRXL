@@ -140,69 +140,78 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
 .footer-links a{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;transition:color 0.2s}
 .footer-links a:hover{color:var(--ink)}
 .footer-copy{font-size:12px;color:var(--ink-light)}
-
-/* ── MOBILE RESPONSIVENESS ── */
-@media (max-width: 768px) {
+@media(max-width:768px){
   .nav-inner{padding:0 1.5rem}
   .nav-links{display:none}
-  .nav-logo{font-size:14px}
   .nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-  .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all 0.3s}
-  .nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:1.5rem;z-index:99;flex-direction:column;gap:0}
+  .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
+  .nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:1.5rem;z-index:99;flex-direction:column}
   .nav-mobile-menu.open{display:flex}
-  .nav-mobile-menu a{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;padding:1rem 0;border-bottom:1px solid var(--rule)}
+  .nav-mobile-menu a{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;padding:0.85rem 0;border-bottom:1px solid var(--rule)}
   .nav-mobile-menu a:last-child{border-bottom:none;margin-top:1rem;text-align:center;background:var(--ink);color:var(--paper);padding:12px}
-  .hero-content{padding:0 1.5rem 3rem}
-  .hero-heading{font-size:clamp(36px,10vw,52px)}
-  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem}
-  .hero-sub{max-width:100%}
-  .hero-actions{flex-direction:column;width:100%;gap:1rem}
-  .btn-primary{text-align:center;width:100%;padding:14px}
-  .btn-ghost{text-align:center;width:100%}
-  .stats-inner{grid-template-columns:1fr;padding:0 1.5rem}
-  .stat{border-right:none;border-bottom:1px solid var(--rule);padding:1.5rem 0}
-  .stat:last-child{border-bottom:none}
-  .about-inner{grid-template-columns:1fr}
-  .about-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
-  .about-right{padding:3rem 1.5rem}
-  .why-inner{padding:3rem 1.5rem}
-  .why-grid{grid-template-columns:1fr}
-  .why-card{border-right:none !important;border-bottom:1px solid rgba(255,255,255,0.12)}
-  .why-card:last-child{border-bottom:none}
-  .bio-inner{grid-template-columns:1fr}
-  .bio-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
-  .bio-right{padding:3rem 1.5rem}
-  .services-inner{padding:3rem 1.5rem}
-  .services-header{flex-direction:column;align-items:flex-start;gap:0.5rem;margin-bottom:2rem}
+  .hero{min-height:auto}
+  .hero-content{padding:2rem 1.5rem 2.5rem}
+  .hero-eyebrow{font-size:10px;margin-bottom:1rem}
+  .hero-heading{font-size:38px;margin-bottom:1.5rem}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.25rem;padding-top:1.5rem}
+  .hero-sub{max-width:100%;font-size:13px}
+  .hero-actions{flex-direction:row;gap:1rem}
+  .btn-primary{padding:12px 20px;font-size:10px}
+  .btn-ghost{font-size:10px}
+  .stats-inner{grid-template-columns:repeat(3,1fr);padding:0 1rem;overflow-x:auto}
+  .stat{padding:1.25rem 0.75rem;min-width:90px}
+  .stat:first-child{padding-left:0}
+  .stat-num{font-size:26px}
+  .stat-label{font-size:9px}
+  .about-inner,.bio-inner,.contact-inner{grid-template-columns:1fr}
+  .about-left{padding:2rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .about-right,.bio-right,.contact-right{padding:2rem 1.5rem}
+  .bio-left{padding:2rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .contact-left{padding:2rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .contact-heading{margin-top:0}
+  .why-inner{padding:2rem 1.5rem}
+  .why-header{margin-bottom:2rem}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .why-card{padding:1.5rem 1.25rem;border-right:none !important;border-bottom:1px solid rgba(255,255,255,0.12)}
+  .why-card:nth-child(odd){border-right:1px solid rgba(255,255,255,0.12) !important}
+  .why-card:last-child,.why-card:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .services-inner{padding:2rem 1.5rem}
+  .services-header{flex-direction:column;align-items:flex-start;gap:0.25rem;margin-bottom:1.5rem}
   .services-grid{grid-template-columns:1fr !important}
-  .service-card{border-right:none !important;border-bottom:1px solid var(--rule)}
+  .service-card{border-right:none !important;border-bottom:1px solid var(--rule);padding:1.75rem 1.5rem}
   .service-card:last-child{border-bottom:none}
-  .sectors-inner{padding:3rem 1.5rem}
+  .sectors-inner{padding:2rem 1.5rem}
+  .sectors-header{margin-bottom:1.5rem}
   .sectors-grid{grid-template-columns:1fr 1fr}
+  .sector-card{padding:1.5rem 1.25rem}
   .sector-card:nth-child(2){border-right:none}
   .sector-card:nth-child(3){border-top:1px solid var(--rule)}
   .sector-card:nth-child(4){border-top:1px solid var(--rule);border-right:none}
-  #compliance > div{padding:3rem 1.5rem}
-  #compliance > div > div:last-child{grid-template-columns:1fr !important}
-  #compliance > div > div:last-child > div{border-right:none !important;border-bottom:1px solid var(--rule)}
-  #compliance > div > div:last-child > div:last-child{border-bottom:none}
-  .process-inner{padding:3rem 1.5rem}
-  .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+  #compliance>div{padding:2rem 1.5rem}
+  #compliance>div>div:first-child{margin-bottom:1.5rem}
+  #compliance>div>div:last-child{grid-template-columns:1fr !important}
+  #compliance>div>div:last-child>div{border-right:none !important;border-bottom:1px solid var(--rule);padding:1.75rem 1.5rem}
+  #compliance>div>div:last-child>div:last-child{border-bottom:none}
+  .process-inner{padding:2rem 1.5rem}
+  .process-header{margin-bottom:1.5rem}
+  .process-steps{grid-template-columns:1fr 1fr;gap:1.5rem}
   .process-steps::before{display:none}
   .step{padding:0}
-  .contact-inner{grid-template-columns:1fr}
-  .contact-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--rule)}
-  .contact-right{padding:3rem 1.5rem}
-  .contact-heading{margin-top:0}
-  footer{flex-direction:column;gap:1.5rem;text-align:center;padding:2rem 1.5rem}
-  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem}
+  .step-marker{width:36px;height:36px;font-size:10px}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:0.75rem}
+  .footer-copy{font-size:11px}
 }
-@media (max-width: 480px) {
+@media(max-width:480px){
+  .hero-heading{font-size:32px}
+  .why-grid{grid-template-columns:1fr}
+  .why-card{border-right:none !important}
   .sectors-grid{grid-template-columns:1fr}
   .sector-card{border-right:none;border-bottom:1px solid var(--rule)}
   .sector-card:last-child{border-bottom:none}
   .process-steps{grid-template-columns:1fr}
-  .hero-heading{font-size:36px}
+  .hero-actions{flex-direction:column;width:100%}
+  .btn-primary,.btn-ghost{width:100%;text-align:center}
 }
 </style>
 </head>
@@ -279,11 +288,11 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <h2 class="why-heading">What makes us <em>different.</em></h2>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal"><p class="why-num">01</p><h3 class="why-title">PMP Certified</h3><p class="why-desc">PMI's Project Management Professional credential is the gold standard in construction PM. It means structured risk management, schedule control, cost tracking, and documentation discipline on every project — not just good intentions.</p></div>
+      <div class="why-card reveal"><p class="why-num">01</p><h3 class="why-title">PMP Certified</h3><p class="why-desc">PMI's Project Management Professional credential is the gold standard in construction PM. Structured risk management, schedule control, cost tracking, and documentation discipline on every project.</p></div>
       <div class="why-card reveal"><p class="why-num">02</p><h3 class="why-title">Truly Independent</h3><p class="why-desc">No financial relationships with contractors, vendors, or suppliers. No referral fees. No preferred lists. Our only obligation is to protect your budget, your schedule, and your project.</p></div>
-      <div class="why-card reveal" style="border-right:none;"><p class="why-num">03</p><h3 class="why-title">Dual Expertise</h3><p class="why-desc">PMP certified construction PM plus LCAM licensed community association management. Most CMs don't understand HOA governance. Most CAMs don't understand construction. We bring both — and that's a significant advantage for South Florida clients.</p></div>
+      <div class="why-card reveal" style="border-right:none;"><p class="why-num">03</p><h3 class="why-title">Dual Expertise</h3><p class="why-desc">PMP certified construction PM plus LCAM licensed community association management. Most CMs don't understand HOA governance. Most CAMs don't understand construction. We bring both.</p></div>
       <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">04</p><h3 class="why-title">Bilingual Advantage</h3><p class="why-desc">Fluent in English and Spanish, we eliminate communication gaps with contractors, engineers, and board members — keeping everyone aligned and accountable.</p></div>
-      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">05</p><h3 class="why-title">South Florida Native</h3><p class="why-desc">Over a decade managing construction on the ground in Miami-Dade and Broward — not from a desk. We know the local contractors, the permitting timelines, the inspectors, and the market conditions that affect every project.</p></div>
+      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">05</p><h3 class="why-title">South Florida Native</h3><p class="why-desc">Over a decade managing construction on the ground in Miami-Dade and Broward. We know the local contractors, permitting timelines, inspectors, and market conditions.</p></div>
       <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);border-right:none;"><p class="why-num">06</p><h3 class="why-title">Structured Reporting</h3><p class="why-desc">Every project gets a structured reporting cadence — RFI logs, change order tracking, weekly status reports, and board-ready documentation at every phase.</p></div>
     </div>
   </div>
@@ -348,19 +357,19 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <div class="reveal" style="padding:2.5rem 2rem;border-right:1px solid var(--rule);">
         <p style="font-size:11px;letter-spacing:0.14em;color:var(--ink-light);margin-bottom:1.5rem;">01</p>
         <h3 style="font-family:var(--ff-display);font-size:22px;font-weight:600;margin-bottom:1rem;line-height:1.1;">40 & 50-Year Recertification</h3>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">Florida law requires structural and electrical recertifications for buildings 40 years and older. We manage the entire process — engineer coordination, inspection scheduling, repair scoping, contractor procurement, and permit closeout — keeping your association compliant and your residents safe.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">Florida law requires structural and electrical recertifications for buildings 40 years and older. We manage the entire process — engineer coordination, inspection scheduling, repair scoping, contractor procurement, and permit closeout.</p>
         <ul class="service-list"><li>Engineer selection & coordination</li><li>Inspection & report management</li><li>Repair scope & bid procurement</li><li>Permit & closeout management</li></ul>
       </div>
       <div class="reveal" style="padding:2.5rem 2rem;border-right:1px solid var(--rule);">
         <p style="font-size:11px;letter-spacing:0.14em;color:var(--ink-light);margin-bottom:1.5rem;">02</p>
         <h3 style="font-family:var(--ff-display);font-size:22px;font-weight:600;margin-bottom:1rem;line-height:1.1;">Reserve Studies & SIRS</h3>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">Florida's Structural Integrity Reserve Study (SIRS) legislation requires condominium associations to fund reserves for critical building components. We help boards understand their obligations, coordinate qualified reserve specialists, and translate study findings into actionable capital plans.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">Florida's Structural Integrity Reserve Study (SIRS) legislation requires condominium associations to fund reserves for critical building components. We help boards understand their obligations and translate findings into actionable capital plans.</p>
         <ul class="service-list"><li>Reserve specialist coordination</li><li>SIRS compliance review</li><li>Capital plan development</li><li>Board presentation support</li></ul>
       </div>
       <div class="reveal" style="padding:2.5rem 2rem;">
         <p style="font-size:11px;letter-spacing:0.14em;color:var(--ink-light);margin-bottom:1.5rem;">03</p>
         <h3 style="font-family:var(--ff-display);font-size:22px;font-weight:600;margin-bottom:1rem;line-height:1.1;">Post-Surfside Compliance</h3>
-        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">In the wake of the Champlain Towers collapse, Florida enacted SB 4-D requiring milestone inspections, structural integrity reserve studies, and mandatory reserve funding for condominium associations. We guide boards through every compliance requirement — clearly, efficiently, and without the legal jargon.</p>
+        <p style="font-size:13px;color:var(--ink-mid);line-height:1.8;margin-bottom:1.5rem;">Florida's SB 4-D requires milestone inspections, structural integrity reserve studies, and mandatory reserve funding. We guide boards through every compliance requirement — clearly, efficiently, and without the legal jargon.</p>
         <ul class="service-list"><li>Milestone inspection management</li><li>SB 4-D compliance guidance</li><li>Structural repair oversight</li><li>Documentation & reporting</li></ul>
       </div>
     </div>
@@ -426,10 +435,8 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
 </footer>
 <script>
 function toggleMenu(){
-  const menu=document.getElementById('mobileMenu');
-  const ham=document.getElementById('hamburger');
-  menu.classList.toggle('open');
-  ham.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
 }
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const siblings=[...el.parentElement.querySelectorAll('.reveal')];const idx=siblings.indexOf(el);setTimeout(()=>el.classList.add('visible'),idx*80);observer.unobserve(el)}})},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
