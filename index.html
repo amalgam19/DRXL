@@ -14,6 +14,7 @@
 :root{--ink:#020202;--ink-mid:#2a2a2a;--ink-light:#555;--paper:#e5e0d8;--paper-warm:#ddd8ce;--rule:rgba(0,0,0,0.18);--rule-heavy:rgba(0,0,0,0.5);--ff-display:'Cormorant Garamond',Georgia,serif;--ff-body:'DM Sans',sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1)}
 html{scroll-behavior:smooth}
 body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--rule)}
@@ -22,7 +23,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta{border:1px solid var(--rule-heavy);padding:8px 20px;color:var(--ink-mid);transition:background 0.2s,color 0.2s}
+.nav-cta{border:1px solid var(--rule-heavy);padding:8px 20px;color:var(--ink-mid);text-decoration:none;transition:background 0.2s,color 0.2s}
 .nav-cta:hover{background:var(--ink);color:var(--paper)}
 .nav-hamburger{display:none}
 .hero{padding-top:64px;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
@@ -67,7 +68,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .why-heading{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1;color:var(--paper)}
 .why-heading em{font-style:italic;font-weight:500;color:rgba(255,255,255,0.5)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.12)}
-.why-card{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.12)}
+.why-card{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12)}
+.why-card:nth-child(3n){border-right:none}
+.why-card:nth-child(n+4){border-bottom:none}
 .why-num{font-size:11px;letter-spacing:0.14em;color:rgba(255,255,255,0.35);margin-bottom:1.5rem}
 .why-title{font-family:var(--ff-display);font-size:22px;font-weight:600;color:var(--paper);margin-bottom:1rem;line-height:1.2}
 .why-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8}
@@ -85,9 +88,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);bord
 .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
 .services-heading{font-family:var(--ff-display);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1}
 .services-note{font-size:12px;color:var(--ink-light);letter-spacing:0.08em}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
-.service-card{padding:2.5rem 2rem;border-right:1px solid var(--rule);position:relative;overflow:hidden;transition:background 0.3s}
-.service-card:last-child{border-right:none}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--rule)}
+.service-card{padding:2.5rem 2rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative;overflow:hidden;transition:background 0.3s}
+.service-card:nth-child(2n){border-right:none}
+.service-card:nth-child(n+3){border-bottom:none}
 .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease)}
 .service-card:hover{background:var(--paper-warm)}
 .service-card:hover::after{transform:scaleX(1)}
@@ -172,21 +176,24 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
   .why-inner{padding:2rem 1.5rem}
   .why-header{margin-bottom:2rem}
   .why-grid{grid-template-columns:1fr 1fr}
-  .why-card{padding:1.5rem 1.25rem;border-right:none !important;border-bottom:1px solid rgba(255,255,255,0.12)}
-  .why-card:nth-child(odd){border-right:1px solid rgba(255,255,255,0.12) !important}
-  .why-card:last-child,.why-card:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .why-card{padding:1.5rem 1.25rem;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12)}
+  .why-card:nth-child(3n){border-right:1px solid rgba(255,255,255,0.12)}
+  .why-card:nth-child(2n){border-right:none}
+  .why-card:nth-child(n+4){border-bottom:1px solid rgba(255,255,255,0.12)}
+  .why-card:nth-last-child(-n+2){border-bottom:none}
   .services-inner{padding:2rem 1.5rem}
   .services-header{flex-direction:column;align-items:flex-start;gap:0.25rem;margin-bottom:1.5rem}
-  .services-grid{grid-template-columns:1fr !important}
-  .service-card{border-right:none !important;border-bottom:1px solid var(--rule);padding:1.75rem 1.5rem}
+  .services-grid{grid-template-columns:1fr}
+  .service-card{border-right:none;border-bottom:1px solid var(--rule);padding:1.75rem 1.5rem}
+  .service-card:nth-child(2n){border-right:none}
+  .service-card:nth-child(n+3){border-bottom:1px solid var(--rule)}
   .service-card:last-child{border-bottom:none}
   .sectors-inner{padding:2rem 1.5rem}
   .sectors-header{margin-bottom:1.5rem}
   .sectors-grid{grid-template-columns:1fr 1fr}
-  .sector-card{padding:1.5rem 1.25rem}
-  .sector-card:nth-child(2){border-right:none}
-  .sector-card:nth-child(3){border-top:1px solid var(--rule)}
-  .sector-card:nth-child(4){border-top:1px solid var(--rule);border-right:none}
+  .sector-card{padding:1.5rem 1.25rem;border-bottom:1px solid var(--rule)}
+  .sector-card:nth-child(2n){border-right:none}
+  .sector-card:nth-child(n+3){border-bottom:none}
   #compliance>div{padding:2rem 1.5rem}
   #compliance>div>div:first-child{margin-bottom:1.5rem}
   #compliance>div>div:last-child{grid-template-columns:1fr !important}
@@ -205,7 +212,8 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
 @media(max-width:480px){
   .hero-heading{font-size:32px}
   .why-grid{grid-template-columns:1fr}
-  .why-card{border-right:none !important}
+  .why-card{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12)}
+  .why-card:last-child{border-bottom:none}
   .sectors-grid{grid-template-columns:1fr}
   .sector-card{border-right:none;border-bottom:1px solid var(--rule)}
   .sector-card:last-child{border-bottom:none}
@@ -290,10 +298,10 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
     <div class="why-grid">
       <div class="why-card reveal"><p class="why-num">01</p><h3 class="why-title">PMP Certified</h3><p class="why-desc">PMI's Project Management Professional credential is the gold standard in construction PM. Structured risk management, schedule control, cost tracking, and documentation discipline on every project.</p></div>
       <div class="why-card reveal"><p class="why-num">02</p><h3 class="why-title">Truly Independent</h3><p class="why-desc">No financial relationships with contractors, vendors, or suppliers. No referral fees. No preferred lists. Our only obligation is to protect your budget, your schedule, and your project.</p></div>
-      <div class="why-card reveal" style="border-right:none;"><p class="why-num">03</p><h3 class="why-title">Dual Expertise</h3><p class="why-desc">PMP certified construction PM plus LCAM licensed community association management. Most CMs don't understand HOA governance. Most CAMs don't understand construction. We bring both.</p></div>
-      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">04</p><h3 class="why-title">Bilingual Advantage</h3><p class="why-desc">Fluent in English and Spanish, we eliminate communication gaps with contractors, engineers, and board members — keeping everyone aligned and accountable.</p></div>
-      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);"><p class="why-num">05</p><h3 class="why-title">South Florida Native</h3><p class="why-desc">Over a decade managing construction on the ground in Miami-Dade and Broward. We know the local contractors, permitting timelines, inspectors, and market conditions.</p></div>
-      <div class="why-card reveal" style="border-top:1px solid rgba(255,255,255,0.12);border-right:none;"><p class="why-num">06</p><h3 class="why-title">Structured Reporting</h3><p class="why-desc">Every project gets a structured reporting cadence — RFI logs, change order tracking, weekly status reports, and board-ready documentation at every phase.</p></div>
+      <div class="why-card reveal"><p class="why-num">03</p><h3 class="why-title">Dual Expertise</h3><p class="why-desc">PMP certified construction PM plus LCAM licensed community association management. Most CMs don't understand HOA governance. Most CAMs don't understand construction. We bring both.</p></div>
+      <div class="why-card reveal"><p class="why-num">04</p><h3 class="why-title">Bilingual Advantage</h3><p class="why-desc">Fluent in English and Spanish, we eliminate communication gaps with contractors, engineers, and board members — keeping everyone aligned and accountable.</p></div>
+      <div class="why-card reveal"><p class="why-num">05</p><h3 class="why-title">South Florida Native</h3><p class="why-desc">Over a decade managing construction on the ground in Miami-Dade and Broward. We know the local contractors, permitting timelines, inspectors, and market conditions.</p></div>
+      <div class="why-card reveal"><p class="why-num">06</p><h3 class="why-title">Structured Reporting</h3><p class="why-desc">Every project gets a structured reporting cadence — RFI logs, change order tracking, weekly status reports, and board-ready documentation at every phase.</p></div>
     </div>
   </div>
 </section>
@@ -325,11 +333,11 @@ footer{max-width:1200px;margin:0 auto;padding:1.75rem 2.5rem;display:flex;justif
       <h2 class="services-heading">Services</h2>
       <p class="services-note">Four tiers of engagement</p>
     </div>
-    <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
+    <div class="services-grid">
       <div class="service-card reveal"><p class="service-num">01</p><h3 class="service-title">Bid Shield</h3><p class="service-desc">Protect your association from unbalanced bids and contractor risk before a dollar is committed.</p><ul class="service-list"><li>Scope of work review & gap analysis</li><li>Bid leveling & comparison matrix</li><li>Vendor qualification & vetting</li><li>Contract terms review</li><li>Award recommendation report</li></ul><span class="service-tag">Procurement advisory</span></div>
       <div class="service-card reveal"><p class="service-num">02</p><h3 class="service-title">Project Advisory</h3><p class="service-desc">Monthly retainer oversight for active projects — structured reporting, accountability, and board-ready documentation.</p><ul class="service-list"><li>RFI management & tracking</li><li>Change order review & negotiation</li><li>Schedule monitoring & updates</li><li>Weekly status reports</li><li>Site visit documentation</li></ul><span class="service-tag">Ongoing oversight</span></div>
-      <div class="service-card reveal" style="border-top:1px solid var(--rule);"><p class="service-num">03</p><h3 class="service-title">Full Representation</h3><p class="service-desc">End-to-end owner's representation from design through closeout — every stakeholder managed, every decision documented.</p><ul class="service-list"><li>Pre-construction planning & budgeting</li><li>Engineer & architect coordination</li><li>Full procurement management</li><li>Construction phase oversight</li><li>Closeout & warranty management</li></ul><span class="service-tag">Full lifecycle</span></div>
-      <div class="service-card reveal" style="border-top:1px solid var(--rule);border-right:none;"><p class="service-num">04</p><h3 class="service-title">Construction Management</h3><p class="service-desc">Direct construction management for ground-up builds, commercial fit-outs, and major renovations — full accountability from preconstruction through certificate of occupancy.</p><ul class="service-list"><li>Preconstruction planning & value engineering</li><li>Subcontractor procurement & management</li><li>Schedule development & control</li><li>Budget tracking & cost reporting</li><li>Quality control & punch list management</li></ul><span class="service-tag">Ground-up & renovations</span></div>
+      <div class="service-card reveal"><p class="service-num">03</p><h3 class="service-title">Full Representation</h3><p class="service-desc">End-to-end owner's representation from design through closeout — every stakeholder managed, every decision documented.</p><ul class="service-list"><li>Pre-construction planning & budgeting</li><li>Engineer & architect coordination</li><li>Full procurement management</li><li>Construction phase oversight</li><li>Closeout & warranty management</li></ul><span class="service-tag">Full lifecycle</span></div>
+      <div class="service-card reveal"><p class="service-num">04</p><h3 class="service-title">Construction Management</h3><p class="service-desc">Direct construction management for ground-up builds, commercial fit-outs, and major renovations — full accountability from preconstruction through certificate of occupancy.</p><ul class="service-list"><li>Preconstruction planning & value engineering</li><li>Subcontractor procurement & management</li><li>Schedule development & control</li><li>Budget tracking & cost reporting</li><li>Quality control & punch list management</li></ul><span class="service-tag">Ground-up & renovations</span></div>
     </div>
   </div>
 </section>
