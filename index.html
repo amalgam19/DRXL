@@ -14,7 +14,9 @@
 :root{--ink:#020202;--ink-mid:#2a2a2a;--ink-light:#555;--paper:#e5e0d8;--paper-warm:#ddd8ce;--rule:rgba(0,0,0,0.18);--rule-heavy:rgba(0,0,0,0.5);--ff-display:'Cormorant Garamond',Georgia,serif;--ff-body:'DM Sans',sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1)}
 html{scroll-behavior:smooth}
 body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
+a,a:link,a:visited{color:var(--ink-mid);text-decoration:none}
+nav a,nav a:link,nav a:visited{color:var(--ink-mid)!important;text-decoration:none}
+.nav-logo,.nav-logo:link,.nav-logo:visited{color:var(--ink)!important}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--rule)}
