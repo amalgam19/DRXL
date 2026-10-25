@@ -662,12 +662,12 @@ const btn=document.getElementById('submit-btn');
 if(form){form.addEventListener('submit',async function(e){e.preventDefault();btn.textContent='Sending...';btn.disabled=true;const data=new FormData(form);const response=await fetch('https://formspree.io/f/xojzawdz',{method:'POST',body:data,headers:{'Accept':'application/json'}});if(response.ok){form.style.display='none';success.style.display='block'}else{btn.textContent='Something went wrong — try again';btn.disabled=false}})}
 </script>
 
-<!-- DRXL Assistant (self-contained chat widget) -->
+<!-- DRXL Assistant (conversational lead bot, self-contained) -->
 <style id="dxc-style">
 #dxc-launcher{position:fixed;bottom:22px;right:22px;z-index:9000;background:var(--ink,#020202);color:var(--paper,#e5e0d8);border:none;cursor:pointer;display:flex;align-items:center;gap:9px;padding:13px 20px;font-family:var(--ff-body,'DM Sans',sans-serif);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;box-shadow:0 6px 24px rgba(0,0,0,0.22);transition:opacity .2s,transform .2s}
 #dxc-launcher:hover{opacity:.9;transform:translateY(-1px)}
 #dxc-launcher svg{width:17px;height:17px}
-#dxc-panel{position:fixed;bottom:22px;right:22px;z-index:9001;width:360px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 44px);background:var(--paper,#e5e0d8);border:1px solid var(--rule-heavy,rgba(0,0,0,.5));box-shadow:0 10px 40px rgba(0,0,0,0.3);display:none;flex-direction:column;font-family:var(--ff-body,'DM Sans',sans-serif);overflow:hidden}
+#dxc-panel{position:fixed;bottom:22px;right:22px;z-index:9001;width:370px;max-width:calc(100vw - 32px);height:580px;max-height:calc(100vh - 44px);background:var(--paper,#e5e0d8);border:1px solid var(--rule-heavy,rgba(0,0,0,.5));box-shadow:0 10px 40px rgba(0,0,0,0.3);display:none;flex-direction:column;font-family:var(--ff-body,'DM Sans',sans-serif);overflow:hidden}
 #dxc-panel.dxc-open{display:flex}
 #dxc-head{background:var(--ink,#020202);color:var(--paper,#e5e0d8);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 #dxc-head .dxc-title{font-family:var(--ff-display,'Cormorant Garamond',serif);font-size:22px;font-weight:600;line-height:1}
@@ -675,21 +675,22 @@ if(form){form.addEventListener('submit',async function(e){e.preventDefault();btn
 #dxc-head-right{display:flex;align-items:center;gap:10px}
 #dxc-lang{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--paper,#e5e0d8);font-size:10px;letter-spacing:.1em;padding:4px 8px;cursor:pointer;font-family:inherit}
 #dxc-close{background:transparent;border:none;color:var(--paper,#e5e0d8);font-size:20px;cursor:pointer;line-height:1;padding:0 2px}
-#dxc-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--paper,#e5e0d8)}
-.dxc-msg{max-width:84%;font-size:13.5px;line-height:1.6;padding:10px 13px;white-space:pre-wrap}
+#dxc-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:9px;background:var(--paper,#e5e0d8)}
+.dxc-msg{max-width:85%;font-size:13.5px;line-height:1.6;padding:10px 13px;white-space:pre-wrap;animation:dxcIn .25s ease}
+@keyframes dxcIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .dxc-bot{align-self:flex-start;background:var(--paper-warm,#ddd8ce);color:var(--ink-mid,#2a2a2a);border:1px solid var(--rule,rgba(0,0,0,.18))}
 .dxc-user{align-self:flex-end;background:var(--ink,#020202);color:var(--paper,#e5e0d8)}
+.dxc-typing{align-self:flex-start;background:var(--paper-warm,#ddd8ce);border:1px solid var(--rule,rgba(0,0,0,.18));padding:12px 14px;display:flex;gap:4px}
+.dxc-typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-light,#555);opacity:.4;animation:dxcBlink 1.2s infinite}
+.dxc-typing span:nth-child(2){animation-delay:.2s}.dxc-typing span:nth-child(3){animation-delay:.4s}
+@keyframes dxcBlink{0%,60%,100%{opacity:.25}30%{opacity:.9}}
 #dxc-chips{display:flex;flex-wrap:wrap;gap:7px;padding:10px 16px;border-top:1px solid var(--rule,rgba(0,0,0,.18));background:var(--paper,#e5e0d8);flex-shrink:0}
-.dxc-chip{font-size:11.5px;letter-spacing:.02em;background:transparent;border:1px solid var(--rule-heavy,rgba(0,0,0,.5));color:var(--ink-mid,#2a2a2a);padding:7px 11px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.dxc-chip{font-size:11.5px;background:transparent;border:1px solid var(--rule-heavy,rgba(0,0,0,.5));color:var(--ink-mid,#2a2a2a);padding:7px 11px;cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
 .dxc-chip:hover{background:var(--ink,#020202);color:var(--paper,#e5e0d8)}
 #dxc-inputrow{display:flex;border-top:1px solid var(--rule,rgba(0,0,0,.18));flex-shrink:0;background:var(--paper,#e5e0d8)}
 #dxc-input{flex:1;border:none;background:transparent;padding:13px 14px;font-family:inherit;font-size:13px;color:var(--ink,#020202);outline:none}
 #dxc-send{border:none;background:var(--ink,#020202);color:var(--paper,#e5e0d8);padding:0 18px;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-.dxc-form{display:flex;flex-direction:column;gap:9px;align-self:stretch;max-width:100%;background:var(--paper-warm,#ddd8ce);border:1px solid var(--rule,rgba(0,0,0,.18));padding:13px}
-.dxc-form input,.dxc-form textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule-heavy,rgba(0,0,0,.5));padding:7px 2px;font-family:inherit;font-size:13px;color:var(--ink,#020202);outline:none}
-.dxc-form textarea{resize:none;height:54px}
-.dxc-form button{background:var(--ink,#020202);color:var(--paper,#e5e0d8);border:none;padding:11px;font-family:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-top:4px}
-.dxc-wa{display:inline-block;background:#25D366;color:#fff !important;text-decoration:none;padding:9px 14px;font-size:12px;letter-spacing:.04em;margin-top:2px}
+.dxc-wa{display:inline-block;background:#25D366;color:#fff !important;text-decoration:none;padding:9px 14px;font-size:12px;margin-top:4px}
 @media(max-width:480px){#dxc-panel{bottom:0;right:0;width:100vw;max-width:100vw;height:100vh;max-height:100vh}#dxc-launcher{bottom:16px;right:16px}}
 </style>
 <button id="dxc-launcher" aria-label="Chat with DRXL">
@@ -699,122 +700,130 @@ if(form){form.addEventListener('submit',async function(e){e.preventDefault();btn
 <div id="dxc-panel" role="dialog" aria-label="DRXL Assistant">
   <div id="dxc-head">
     <div><div class="dxc-title">DRXL</div><div class="dxc-sub" id="dxc-subtitle">Virtual Assistant</div></div>
-    <div id="dxc-head-right">
-      <button id="dxc-lang">ES</button>
-      <button id="dxc-close" aria-label="Close">&times;</button>
-    </div>
+    <div id="dxc-head-right"><button id="dxc-lang">ES</button><button id="dxc-close" aria-label="Close">&times;</button></div>
   </div>
   <div id="dxc-body"></div>
   <div id="dxc-chips"></div>
-  <div id="dxc-inputrow">
-    <input id="dxc-input" type="text" autocomplete="off" />
-    <button id="dxc-send">Send</button>
-  </div>
+  <div id="dxc-inputrow"><input id="dxc-input" type="text" autocomplete="off" /><button id="dxc-send">Send</button></div>
 </div>
 <script>
 (function(){
-  var WHATSAPP = ""; /* set to "17865551234" (country code + number, no +) when the work line is ready */
+  var WHATSAPP = ""; /* set to "17865551234" (country code + number, no +) once the work line is ready */
   var FORM = "https://formspree.io/f/xojzawdz";
-  var lang = "en";
+  var lang = "en", step = null, data = {};
   var T = {
     en:{
-      sub:"Virtual Assistant",
-      input:"Type your question…",
-      send:"Send",
-      langbtn:"ES",
-      greet:"Hi — I'm the DRXL assistant. How can I help with your project? Tap an option below or type a question.",
-      chips:[["what","What we do"],["services","Services"],["areas","Service areas"],["compliance","Compliance & recert"],["start","Start a project"],["wa","WhatsApp"]],
-      what:"DRXL is your owner's representative and construction project manager. We oversee your project on your behalf — budget, schedule, procurement, and contractor accountability — from preconstruction through closeout. We represent the owner, not the contractor.",
-      services:"We offer three tiers:\n\n• Bid Shield — procurement advisory: bid leveling, vendor vetting, and an award recommendation.\n• Project Advisory — monthly oversight of an active project.\n• Full Representation — end-to-end owner's representation, preconstruction through closeout.\n\nWould you like to start a project?",
-      areas:"We serve Miami-Dade and Broward County, across South Florida.",
-      compliance:"We manage 40- and 50-year recertifications, SIRS, SB 4-D milestone inspections, building envelope restoration, reroofing, drainage, and elevator modernization — coordinating engineers, inspections, and contractors on your behalf. Want DRXL to review your building? Start a project below.",
-      price:"Pricing is tailored to each project's scope, so the best next step is a quick call. Leave your details below and DRXL will get back to you timely.",
-      contractor:"We're the owner's representative, not the contractor. We manage and oversee the project on your behalf and hold the construction team accountable — we don't perform the construction work itself. That's what keeps our loyalty entirely on your side.",
-      engineer:"We're not engineers, but we coordinate licensed engineering through a partner firm when a project needs it.",
-      fallback:"Good question — the best next step is to leave your details and DRXL will get back to you timely.",
-      startprompt:"Great — tell us about your project and DRXL will get back to you timely.",
-      wa_soon:"Our WhatsApp line is coming soon. In the meantime, leave your details below and DRXL will get back to you timely.",
-      wa_link:"Message us on WhatsApp:",
-      fname:"Your name",femail:"Email",fphone:"Phone (optional)",fmsg:"Property & project (e.g. elevator modernization, 59-unit condo in Miami Beach)",fsubmit:"Send to DRXL",
-      thanks:"Thank you — DRXL will get back to you timely.",
-      err:"Something went wrong — please email info@drxlmgmt.com and DRXL will get back to you timely."
+      sub:"Virtual Assistant", input:"Type your message…", send:"Send", langbtn:"ES",
+      greet:"Hi — I'm the DRXL assistant. Are you planning a project, or just exploring what an owner's rep does? Either way, I can help — tap an option below or just tell me what's going on.",
+      chips:[["what","What we do"],["services","Services"],["compliance","Compliance & recert"],["areas","Service areas"],["start","Start a project"],["wa","WhatsApp"]],
+      what:"In short: we're your owner's representative — we run the project on your behalf and keep the contractors honest, from planning through closeout. We're on your side of the table, not the builder's.\n\nAre you weighing this for a specific building, or just getting the lay of the land?",
+      services:"We keep it simple — three ways to work with us:\n\n• Bid Shield — we vet and level contractor bids before you commit a dollar.\n• Project Advisory — monthly oversight of a project that's already moving.\n• Full Representation — we run the whole thing, start to finish.\n\nWant me to set up a quick follow-up from DRXL?",
+      compliance:"That's right in our wheelhouse — 40- and 50-year recertifications, SIRS, SB 4-D milestone inspections, envelope, roofing, drainage, elevators. We line up the engineers, inspections, and contractors and keep it all moving.\n\nWhat's the building dealing with? I can have DRXL take a look.",
+      areas:"We cover Miami-Dade and Broward, across South Florida. Where's your property?",
+      contractor:"Good thing to clarify — we're the owner's representative, not the contractor. We manage and oversee the work on your behalf and hold the construction team accountable; we don't perform the construction ourselves. That's what keeps us entirely on your side.",
+      engineer:"We're not engineers, but we bring in a licensed engineering partner when a project needs it — so it's handled without you having to coordinate it.",
+      price:"Pricing is tailored to each project's scope, so it's really a quick-call conversation rather than a number I can throw out here. Want me to set up that follow-up?",
+      fallback:"Good question — the best move is a quick follow-up from the team. Want me to grab a couple of details so DRXL can help?",
+      startack:"Happy to help — let's get you set up.",
+      q_type:"What kind of property is it — condo, HOA, commercial, or something else?",
+      q_need:"Got it. And what's prompting the project? (e.g. recertification, envelope/roof, elevator, drainage — or just say \"not sure\")",
+      q_name:"Makes sense. And your name?",
+      q_email:"Thanks, {name}. What's the best email for DRXL to reach you?",
+      q_phone:"Great. A phone number too, in case email bounces? (optional — type \"skip\" to leave it out)",
+      bademail:"Hmm, that doesn't look like an email — mind trying again?",
+      done:"Perfect, {name} — you're all set. DRXL will get back to you timely about your project. Talk soon.",
+      err:"Something went wrong sending that — please email info@drxlmgmt.com directly and DRXL will get back to you timely.",
+      wa_link:"Here's our WhatsApp — tap to message us:",
+      ack:["Got it.","Perfect.","Understood.","Great."]
     },
     es:{
-      sub:"Asistente Virtual",
-      input:"Escriba su pregunta…",
-      send:"Enviar",
-      langbtn:"EN",
-      greet:"Hola — soy el asistente de DRXL. ¿En qué proyecto le puedo ayudar? Toque una opción o escriba su pregunta.",
-      chips:[["what","Qué hacemos"],["services","Servicios"],["areas","Áreas de servicio"],["compliance","Cumplimiento y recert."],["start","Iniciar un proyecto"],["wa","WhatsApp"]],
-      what:"DRXL es su representante del propietario y gerente de proyectos de construcción. Supervisamos su proyecto en su nombre — presupuesto, cronograma, adquisiciones y responsabilidad del contratista — desde la preconstrucción hasta el cierre. Representamos al propietario, no al contratista.",
-      services:"Ofrecemos tres niveles:\n\n• Bid Shield — asesoría de adquisiciones: nivelación de ofertas, evaluación de proveedores y recomendación de adjudicación.\n• Project Advisory — supervisión mensual de un proyecto activo.\n• Full Representation — representación integral del propietario, de la preconstrucción al cierre.\n\n¿Desea iniciar un proyecto?",
-      areas:"Servimos los condados de Miami-Dade y Broward, en todo el sur de la Florida.",
-      compliance:"Gestionamos recertificaciones de 40 y 50 años, SIRS, inspecciones de hito SB 4-D, restauración de fachada, reemplazo de techo, drenaje y modernización de ascensores — coordinando ingenieros, inspecciones y contratistas en su nombre. ¿Quiere que DRXL revise su edificio? Inicie un proyecto abajo.",
-      price:"El precio se adapta al alcance de cada proyecto, así que el mejor paso es una llamada breve. Deje sus datos abajo y DRXL le responderá a la brevedad.",
-      contractor:"Somos el representante del propietario, no el contratista. Gestionamos y supervisamos el proyecto en su nombre y responsabilizamos al equipo de construcción — no realizamos la obra. Eso mantiene nuestra lealtad totalmente de su lado.",
-      engineer:"No somos ingenieros, pero coordinamos ingeniería licenciada a través de una firma aliada cuando el proyecto lo requiere.",
-      fallback:"Buena pregunta — el mejor paso es dejar sus datos y DRXL le responderá a la brevedad.",
-      startprompt:"Excelente — cuéntenos sobre su proyecto y DRXL le responderá a la brevedad.",
-      wa_soon:"Nuestra línea de WhatsApp estará disponible pronto. Mientras tanto, deje sus datos abajo y DRXL le responderá a la brevedad.",
-      wa_link:"Escríbanos por WhatsApp:",
-      fname:"Su nombre",femail:"Correo",fphone:"Teléfono (opcional)",fmsg:"Propiedad y proyecto (ej. modernización de ascensor, condominio de 59 unidades en Miami Beach)",fsubmit:"Enviar a DRXL",
-      thanks:"Gracias — DRXL le responderá a la brevedad.",
-      err:"Algo salió mal — escriba a info@drxlmgmt.com y DRXL le responderá a la brevedad."
+      sub:"Asistente Virtual", input:"Escriba su mensaje…", send:"Enviar", langbtn:"EN",
+      greet:"Hola — soy el asistente de DRXL. ¿Está planeando un proyecto o solo explorando qué hace un representante del propietario? De cualquier forma le puedo ayudar — toque una opción o cuénteme qué necesita.",
+      chips:[["what","Qué hacemos"],["services","Servicios"],["compliance","Cumplimiento y recert."],["areas","Áreas de servicio"],["start","Iniciar un proyecto"],["wa","WhatsApp"]],
+      what:"En breve: somos su representante del propietario — dirigimos el proyecto en su nombre y mantenemos a los contratistas en línea, desde la planificación hasta el cierre. Estamos de su lado, no del constructor.\n\n¿Lo está considerando para un edificio en específico, o solo explorando?",
+      services:"Lo mantenemos simple — tres formas de trabajar con nosotros:\n\n• Bid Shield — evaluamos y nivelamos las ofertas de los contratistas antes de que comprometa un dólar.\n• Project Advisory — supervisión mensual de un proyecto en marcha.\n• Full Representation — dirigimos todo, de principio a fin.\n\n¿Quiere que programe un seguimiento de DRXL?",
+      compliance:"Eso es justo lo nuestro — recertificaciones de 40 y 50 años, SIRS, inspecciones de hito SB 4-D, fachada, techos, drenaje, ascensores. Coordinamos ingenieros, inspecciones y contratistas y lo mantenemos todo en marcha.\n\n¿Qué situación tiene el edificio? Puedo pedirle a DRXL que lo revise.",
+      areas:"Cubrimos Miami-Dade y Broward, en todo el sur de la Florida. ¿Dónde está su propiedad?",
+      contractor:"Buena aclaración — somos el representante del propietario, no el contratista. Gestionamos y supervisamos la obra en su nombre y responsabilizamos al equipo de construcción; no realizamos la obra. Eso nos mantiene totalmente de su lado.",
+      engineer:"No somos ingenieros, pero traemos a un socio de ingeniería licenciado cuando el proyecto lo requiere — para que esté cubierto sin que usted lo coordine.",
+      price:"El precio se adapta al alcance de cada proyecto, así que es más una conversación por llamada que un número que pueda dar aquí. ¿Quiere que programe ese seguimiento?",
+      fallback:"Buena pregunta — lo mejor es un seguimiento rápido del equipo. ¿Quiere que tome un par de datos para que DRXL le ayude?",
+      startack:"Con gusto — vamos a registrarlo.",
+      q_type:"¿Qué tipo de propiedad es — condominio, HOA, comercial u otra?",
+      q_need:"Entendido. ¿Y qué motiva el proyecto? (ej. recertificación, fachada/techo, ascensor, drenaje — o diga \"no estoy seguro\")",
+      q_name:"Perfecto. ¿Y su nombre?",
+      q_email:"Gracias, {name}. ¿Cuál es el mejor correo para que DRXL le contacte?",
+      q_phone:"Excelente. ¿Un teléfono también, por si el correo falla? (opcional — escriba \"omitir\")",
+      bademail:"Mmm, eso no parece un correo — ¿lo intenta de nuevo?",
+      done:"Perfecto, {name} — está todo listo. DRXL le responderá a la brevedad sobre su proyecto. Hasta pronto.",
+      err:"Algo salió mal al enviar — escriba directamente a info@drxlmgmt.com y DRXL le responderá a la brevedad.",
+      wa_link:"Aquí está nuestro WhatsApp — toque para escribirnos:",
+      ack:["Entendido.","Perfecto.","Muy bien.","Excelente."]
     }
   };
-  var panel=document.getElementById('dxc-panel'),launcher=document.getElementById('dxc-launcher'),
-      body=document.getElementById('dxc-body'),chips=document.getElementById('dxc-chips'),
-      input=document.getElementById('dxc-input'),send=document.getElementById('dxc-send'),
-      closeb=document.getElementById('dxc-close'),langb=document.getElementById('dxc-lang'),
-      sub=document.getElementById('dxc-subtitle'),started=false;
+  var P=document.getElementById('dxc-panel'),L=document.getElementById('dxc-launcher'),B=document.getElementById('dxc-body'),
+      C=document.getElementById('dxc-chips'),I=document.getElementById('dxc-input'),S=document.getElementById('dxc-send'),
+      X=document.getElementById('dxc-close'),LG=document.getElementById('dxc-lang'),SUB=document.getElementById('dxc-subtitle'),started=false;
   function t(){return T[lang];}
-  function scroll(){body.scrollTop=body.scrollHeight;}
-  function addBot(txt){var d=document.createElement('div');d.className='dxc-msg dxc-bot';d.textContent=txt;body.appendChild(d);scroll();}
-  function addUser(txt){var d=document.createElement('div');d.className='dxc-msg dxc-user';d.textContent=txt;body.appendChild(d);scroll();}
-  function renderChips(){chips.innerHTML='';t().chips.forEach(function(c){var b=document.createElement('button');b.className='dxc-chip';b.textContent=c[1];b.onclick=function(){handle(c[0],c[1]);};chips.appendChild(b);});}
-  function setStatic(){sub.textContent=t().sub;input.placeholder=t().input;send.textContent=t().send;langb.textContent=t().langbtn;}
-  function showForm(){
-    var f=document.createElement('form');f.className='dxc-form';
-    f.innerHTML='<input name="name" placeholder="'+t().fname+'" required><input name="email" type="email" placeholder="'+t().femail+'" required><input name="phone" placeholder="'+t().fphone+'"><textarea name="message" placeholder="'+t().fmsg+'"></textarea><button type="submit">'+t().fsubmit+'</button>';
-    f.onsubmit=function(e){e.preventDefault();var btn=f.querySelector('button');btn.disabled=true;
-      fetch(FORM,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
-        f.remove();addBot(r.ok?t().thanks:t().err);}).catch(function(){f.remove();addBot(t().err);});};
-    body.appendChild(f);scroll();
+  function scroll(){B.scrollTop=B.scrollHeight;}
+  function addUser(x){var d=document.createElement('div');d.className='dxc-msg dxc-user';d.textContent=x;B.appendChild(d);scroll();}
+  function rawBot(x){var d=document.createElement('div');d.className='dxc-msg dxc-bot';d.textContent=x;B.appendChild(d);scroll();}
+  function botSay(x,cb){var tp=document.createElement('div');tp.className='dxc-typing';tp.innerHTML='<span></span><span></span><span></span>';B.appendChild(tp);scroll();
+    var delay=Math.min(1100,500+x.length*7);
+    setTimeout(function(){tp.remove();rawBot(x);if(cb)cb();},delay);}
+  function chipsOn(on){C.style.display=on?'flex':'none';}
+  function renderChips(){C.innerHTML='';t().chips.forEach(function(c){if(c[0]==='wa'&&!WHATSAPP)return;var b=document.createElement('button');b.className='dxc-chip';b.textContent=c[1];b.onclick=function(){route(c[0],c[1]);};C.appendChild(b);});}
+  function setStatic(){SUB.textContent=t().sub;I.placeholder=t().input;S.textContent=t().send;LG.textContent=t().langbtn;}
+  function ack(){var a=t().ack;return a[Math.floor(Math.random()*a.length)];}
+  function beginCapture(){step='type';data={};chipsOn(false);botSay(t().startack,function(){botSay(t().q_type);});}
+  function submitLead(){
+    var msg="Project type: "+(data.type||"-")+"\nNeed/driver: "+(data.need||"-")+"\nVia: DRXL website chatbot ("+lang.toUpperCase()+")";
+    var fd=new FormData();fd.append('name',data.name||'');fd.append('email',data.email||'');fd.append('phone',data.phone||'');
+    fd.append('property',data.type||'');fd.append('project',data.need||'');fd.append('message',msg);fd.append('_subject','New chatbot lead — '+(data.name||'')+' ('+(data.type||'')+')');
+    fetch(FORM,{method:'POST',body:fd,headers:{'Accept':'application/json'}}).then(function(r){
+      botSay(r.ok?t().done.replace('{name}',data.name||''):t().err,function(){step=null;chipsOn(true);});
+    }).catch(function(){botSay(t().err,function(){step=null;chipsOn(true);});});
   }
-  function showWhatsApp(){
-    if(WHATSAPP){var a=document.createElement('a');a.className='dxc-wa';a.href='https://wa.me/'+WHATSAPP;a.target='_blank';a.rel='noopener';a.textContent='WhatsApp';var d=document.createElement('div');d.className='dxc-msg dxc-bot';d.textContent=t().wa_link+' ';d.appendChild(a);body.appendChild(d);scroll();}
-    else{addBot(t().wa_soon);showForm();}
+  function captureInput(v){
+    if(step==='type'){data.type=v;step='need';botSay(ack(),function(){botSay(t().q_need);});}
+    else if(step==='need'){data.need=v;step='name';botSay(t().q_name);}
+    else if(step==='name'){data.name=v.replace(/[^A-Za-zÀ-ÿ'´ .-]/g,'').trim()||v;step='email';botSay(t().q_email.replace('{name}',data.name));}
+    else if(step==='email'){ if(!/\S+@\S+\.\S+/.test(v)){botSay(t().bademail);return;} data.email=v;step='phone';botSay(t().q_phone);}
+    else if(step==='phone'){ var low=v.toLowerCase(); data.phone=(low==='skip'||low==='omitir'||low==='n/a')?'':v; step=null; submitLead();}
   }
-  function handle(key,label){
+  function route(key,label){
     if(label)addUser(label);
     var x=t();
-    if(key==='what')addBot(x.what);
-    else if(key==='services')addBot(x.services);
-    else if(key==='areas')addBot(x.areas);
-    else if(key==='compliance'){addBot(x.compliance);showForm();}
-    else if(key==='start'){addBot(x.startprompt);showForm();}
-    else if(key==='wa')showWhatsApp();
-    else if(key==='price'){addBot(x.price);showForm();}
-    else if(key==='contractor')addBot(x.contractor);
-    else if(key==='engineer')addBot(x.engineer);
-    else {addBot(x.fallback);showForm();}
+    if(key==='what')botSay(x.what);
+    else if(key==='services')botSay(x.services);
+    else if(key==='compliance')botSay(x.compliance);
+    else if(key==='areas')botSay(x.areas);
+    else if(key==='contractor')botSay(x.contractor);
+    else if(key==='engineer')botSay(x.engineer);
+    else if(key==='price')botSay(x.price,beginCapture);
+    else if(key==='start')beginCapture();
+    else if(key==='wa'){ if(WHATSAPP){var d=document.createElement('div');d.className='dxc-msg dxc-bot';d.textContent=x.wa_link+' ';var a=document.createElement('a');a.className='dxc-wa';a.href='https://wa.me/'+WHATSAPP;a.target='_blank';a.rel='noopener';a.textContent='WhatsApp';d.appendChild(a);B.appendChild(d);scroll();} else beginCapture(); }
+    else botSay(x.fallback,beginCapture);
   }
   function freeText(v){
-    addUser(v);var low=v.toLowerCase();
-    if(/price|pricing|cost|fee|rate|charge|precio|costo|tarifa|cu[aá]nto/.test(low)){handle('price');}
-    else if(/contractor|build|builder|general contractor|contratista|constru/.test(low)){addBot(t().contractor);}
-    else if(/engineer|engineering|ingenier/.test(low)){addBot(t().engineer);}
-    else if(/area|serve|location|where|zona|[aá]rea|ubica|donde/.test(low)){addBot(t().areas);}
-    else if(/recert|sirs|milestone|40|50|sb ?4|envelope|roof|elevator|drainage|ascensor|techo|fachada/.test(low)){handle('compliance');}
-    else if(/service|servic|tier|what do you|qu[eé] hacen|qu[eé] ofrecen/.test(low)){addBot(t().services);}
-    else {handle('fallback');}
+    addUser(v);
+    if(step){captureInput(v);return;}
+    var low=v.toLowerCase();
+    if(/price|pricing|cost|fee|rate|charge|quote|precio|costo|tarifa|cu[aá]nto/.test(low))route('price');
+    else if(/contractor|general contractor|do you build|builder|contratista|constru(?!ction project)/.test(low))route('contractor');
+    else if(/engineer|engineering|ingenier/.test(low))route('engineer');
+    else if(/recert|sirs|milestone|40.?year|50.?year|sb.?4|envelope|roof|elevator|drainage|ascensor|techo|fachada|recertific/.test(low))route('compliance');
+    else if(/service|tier|offer|what do you|qu[eé] hacen|qu[eé] ofrecen|servic/.test(low))route('services');
+    else if(/area|serve|location|where|zona|[aá]rea|ubica|d[oó]nde/.test(low))route('areas');
+    else if(/start|hire|help|project|quote|contact|interested|iniciar|contratar|ayuda|proyecto|interesa/.test(low))beginCapture();
+    else route('fallback');
   }
-  function open(){panel.classList.add('dxc-open');launcher.style.display='none';if(!started){started=true;addBot(t().greet);renderChips();}}
-  function close(){panel.classList.remove('dxc-open');launcher.style.display='flex';}
-  launcher.onclick=open;closeb.onclick=close;
-  send.onclick=function(){var v=input.value.trim();if(v){input.value='';freeText(v);}};
-  input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send.click();}});
-  langb.onclick=function(){lang=(lang==='en')?'es':'en';setStatic();renderChips();addBot(t().greet);};
+  function openPanel(){P.classList.add('dxc-open');L.style.display='none';if(!started){started=true;botSay(t().greet,function(){renderChips();});}}
+  function closePanel(){P.classList.remove('dxc-open');L.style.display='flex';}
+  L.onclick=openPanel;X.onclick=closePanel;
+  S.onclick=function(){var v=I.value.trim();if(v){I.value='';freeText(v);}};
+  I.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();S.click();}});
+  LG.onclick=function(){lang=(lang==='en')?'es':'en';step=null;chipsOn(true);setStatic();renderChips();botSay(t().greet);};
   setStatic();
 })();
 </script>
